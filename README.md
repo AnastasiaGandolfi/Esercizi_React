@@ -1,1 +1,0 @@
-Esercizi sul modulo React di Develhope
