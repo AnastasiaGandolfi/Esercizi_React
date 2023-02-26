@@ -4,7 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-let hello = <h1>Hello, world!</h1>
+function Greeting(name) {
+  return (<h1>Hello, {name}</h1>)
+}
+
+export default Greeting
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
