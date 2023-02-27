@@ -4,11 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-function Greeting(name) {
-  return (<h1>Hello, {name}</h1>)
+function Sum(a, b) {
+  const result = a + b;
+  return (<h2>{result}</h2>)
 }
 
-export default Greeting
+export default Sum
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
