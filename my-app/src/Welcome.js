@@ -2,8 +2,11 @@ import React from "react";
 
 export class Welcome extends React.Component {
     render() {
-        return(
-            <p>Welcome, {this.props.name}!</p>
+        return (
+            function Welcome(props) {
+                return <h1>Welcome, {props.name || "Anastasia"}</h1>
+
+            }
         )
     }
 }
