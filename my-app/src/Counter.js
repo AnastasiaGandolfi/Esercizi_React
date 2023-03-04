@@ -1,6 +1,7 @@
-// Modify the Counter component so that the initial value of the counter, the increment interval and the increment amount are passed as props to the component.
+// Extract the h1 tag showing the count state variable into a new component called CounterDisplay and render it within the Counter component, passing it the count state variable as a prop.
 
 import React from "react";
+import CounterDisplay from "./CounterDisplay";
 
 export class Counter extends React.Component {
     state = {
@@ -17,7 +18,7 @@ export class Counter extends React.Component {
     }
     render() {
         return (
-            <h1>Counter: {this.state.count}</h1>
+           <CounterDisplay countState={this.state.count} />
         )
     }
 }
