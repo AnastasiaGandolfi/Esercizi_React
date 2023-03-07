@@ -7,7 +7,7 @@ export class ClickTracker extends React.Component {
 
     clickButton = (event) => {
         this.setState(() => {
-            return { lastButton: event.target.innerHTML }
+            return { lastButton: event.currentTarget.innerHTML }
         })
     }
     render() {
@@ -15,7 +15,7 @@ export class ClickTracker extends React.Component {
             <div>
                 <button onClick={this.clickButton}>Button 1</button>
                 <button onClick={this.clickButton}>Button 2</button>
-                <button onClick={this.clickButton}>Button 3</button>
+                <button onClick={this.clickButton}><img width="200px" src="https://www.e-coop.it/sites/default/files/styles/scale/public/2020-09/Gatto%20Indoor_Big_0.jpeg?itok=XeEiAZf3" alt="Image" /></button>
                 <h1>Hai cliccato il... {this.state.lastButton}</h1>
             </div>
         )

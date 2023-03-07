@@ -1,5 +1,6 @@
 import React from "react";
-import Login from "./Login";
+// import Login from "./Login";
+import UncontrolledLogin from "./UncontrolledLogin";
 
 export class App extends React.Component {
     handleOnLogin = (loginData) => {
@@ -8,7 +9,7 @@ export class App extends React.Component {
     render() {
         return(
             <div>
-                <Login onLogin={this.handleOnLogin} />
+                <UncontrolledLogin onLogin={this.handleOnLogin} />
             </div>
         )
     }

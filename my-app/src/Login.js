@@ -1,5 +1,3 @@
-// Add a "reset" button to the Login component that clears the content of all three inputs when clicked.
-
 import React from "react";
 
 export default class Login extends React.Component {
