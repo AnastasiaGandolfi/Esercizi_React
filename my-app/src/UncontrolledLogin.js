@@ -1,4 +1,4 @@
-// Implement an UncontrolledLogin component that implements all the operations of the Login component, but does so using uncontrolled components.
+// Modify the UncontrolledLogin component so that the username input is automatically focused when the component renders the first time.
 
 import React, { createRef } from 'react'
 
@@ -6,8 +6,8 @@ export default class UncontrolledLogin extends React.Component {
   constructor(props) {
     super(props)
     this._formRef = createRef()
-
   }
+
   handleSubmit = (event) => {
     event.preventDefault()
     let username = event.target.elements.username.value
@@ -17,6 +17,7 @@ export default class UncontrolledLogin extends React.Component {
       this.props.onLogin({ username, password, remember })
     }
   }
+
   handleReset = () => {
     this._formRef.current.elements.username.value = "";
     this._formRef.current.elements.password.value = "";
@@ -31,7 +32,6 @@ export default class UncontrolledLogin extends React.Component {
     }
   }
 
-
   render() {
     return (
       <div>
@@ -41,6 +41,7 @@ export default class UncontrolledLogin extends React.Component {
             name="username"
             type="text"
             onChange={this.isLoginValid}
+            autoFocus
           />
           <br />
           <br />
