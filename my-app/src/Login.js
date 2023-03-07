@@ -22,11 +22,7 @@ export default class Login extends React.Component {
     isLoginInvalid = () => {
         return this.state.username === '' || this.state.password === '';
     }
-
-    handleOnLogin = () => {
-
-    }
-
+    
     render() {
         return (
             <div>
