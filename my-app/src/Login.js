@@ -15,12 +15,12 @@ export default class Login extends React.Component {
         const checked = event.target.checked;
         const type = event.target.type;
         this.setState({
-            [name]: type === 'checkbox' ? checked : value
+            [name] : type === 'checkbox' ? checked : value
         })
     }
 
-    isLoginValid = () => {
-        return this.state.username !== '' && this.state.password !== '';
+    isLoginInvalid = () => {
+        return this.state.username === '' || this.state.password === '';
     }
 
     handleOnLogin = () => {
@@ -54,7 +54,7 @@ export default class Login extends React.Component {
                     checked={this.state.remember}
                     onChange={this.handleInputChange} />
                     <br/>
-                    <button type="submit" disabled={!this.isLoginValid()} onClick={this.props.onLogin}>Login</button>
+                    <button type="submit" disabled={this.isLoginInvalid()} onClick={() => this.props.onLogin(this.state)}>Login</button>
             </div>
         )
     }

@@ -2,8 +2,8 @@ import React from "react";
 import Login from "./Login";
 
 export class App extends React.Component {
-    handleOnLogin = (loginData) => {
-        console.log(loginData);
+    handleOnLogin = (state) => {
+        console.log(state);
     }
     render() {
         return(
