@@ -1,6 +1,6 @@
-// Add a "login" button to the Login component. This button should be disabled as long as the username and password inputs are empty. When clicked, the event handler attached to the button should call an onLogin function passed as a prop to the Login component, passing it the state. 
+// Add a "reset" button to the Login component that clears the content of all three inputs when clicked.
 
-import React from 'react'
+import React from "react";
 
 export default class Login extends React.Component {
     state = {
@@ -23,8 +23,12 @@ export default class Login extends React.Component {
         return this.state.username !== '' && this.state.password !== '';
     }
 
-    handleOnLogin = () => {
-
+    handleReset = () => {
+        this.setState({
+            username: "",
+            password: "",
+            remember: false,
+        })
     }
 
     render() {
@@ -53,8 +57,9 @@ export default class Login extends React.Component {
                     value="remember"
                     checked={this.state.remember}
                     onChange={this.handleInputChange} />
-                    <br/>
-                    <button type="submit" disabled={!this.isLoginValid()} onClick={this.props.onLogin}>Login</button>
+                <br />
+                <button type="submit" disabled={!this.isLoginValid()} onClick={this.props.onLogin}>Login</button>
+                <button type="submit" onClick={this.handleReset}>Reset</button>
             </div>
         )
     }
