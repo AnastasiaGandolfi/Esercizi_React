@@ -13,7 +13,6 @@ export default class TodoList extends Component {
         event.preventDefault()
         let newValue = document.getElementById('input').value
         this.setState((prevState) => ({ items: [...prevState.items, newValue] }))
-        document.getElementById('input').value = '';
     }
     render() {
         return (
