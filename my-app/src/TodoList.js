@@ -6,7 +6,7 @@ export default class TodoList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: []
+            items: ['doccia']
         }
     }
     handleAddItem = (event) => {
@@ -18,15 +18,18 @@ export default class TodoList extends Component {
 
     handleReset = () => {
         this.setState({
-            items:[]
+            items: []
         })
     }
+
+
     render() {
         return (
             <div>
                 <form onSubmit={this.handleAddItem}>
                     <ul>
-                        {this.state.items.map(item => <li>{item}</li>)}
+                        {this.state.items.map((item) =>
+                            <li>{item} <button >Remove</button></li>)}
                     </ul>
                     <input type="text" id="input"></input>
                     <button type='submit'>Add item</button>
