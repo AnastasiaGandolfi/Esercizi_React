@@ -1,6 +1,6 @@
 import React from "react";
-import TodoList from "./TodoList";
-import Welcome from "./Welcome";
+import Login from "./Login";
+
 
 export class App extends React.Component {
     handleOnLogin = (loginData) => {
@@ -9,7 +9,7 @@ export class App extends React.Component {
     render() {
         return(
             <div>
-                <Welcome name="Anastasia" />
+                <Login />
             </div>
         )
     }

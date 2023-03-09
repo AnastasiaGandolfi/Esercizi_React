@@ -1,5 +1,6 @@
 import React from "react";
 
+
 export default class Login extends React.Component {
     state = {
         username: "",
@@ -56,9 +57,19 @@ export default class Login extends React.Component {
                     checked={this.state.remember}
                     onChange={this.handleInputChange} />
                 <br />
-                <button type="submit" disabled={!this.isLoginValid()} onClick={this.props.onLogin}>Login</button>
+                <button
+                    type="submit"
+                    disabled={!this.isLoginValid()}
+                    onClick={this.props.onLogin}
+                    style={{
+                        backgroundColor: this.state.password.length < 8 ? "red" : "green"
+                    }}>
+                        Login
+                </button>
                 <button type="submit" onClick={this.handleReset}>Reset</button>
             </div>
         )
     }
 }
+
+// Modify the Login component from Forms 03 so that the "login" button background color is "red" when the inputted password's length is shorter than 8 characters, green otherwise.
