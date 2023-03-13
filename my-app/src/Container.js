@@ -1,5 +1,3 @@
-// Modify the Container component so that it can display a title received within the title prop.
-
 import React, { Component } from 'react'
 
 export default class Container extends Component {

@@ -1,28 +1,42 @@
-// Create a TodoList component that renders a ul tag with a li tag for each item contained in the items state variable. The items state variable should be an array of strings. The TodoList component should also contain an input tag and a button. When the button is clicked, the event handler should add the value of the input tag to the items array.
+// Modify the TodoList component so that, instead of rendering the items array within the ul tag, it calls the function passed to its render prop, passing it the items array as a parameter, as well as the function required to delete the item. Pass a render prop to the TodoList component to correctly render and interact with the items array.
 
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 
 export default class TodoList extends Component {
+    formRef = createRef()
+
     constructor(props) {
         super(props);
         this.state = {
-            items: ["preparare il pranzo", "allenarsi", "studiare", "fare gli esercizi"]
+            items: []
         }
     }
+
     handleAddItem = (event) => {
         event.preventDefault()
-        let newValue = document.getElementById('input').value
-        this.setState((prevState) => ({ items: [...prevState.items, newValue] }))
+        let { todo } = this.formRef.current.elements
+        this.setState((prevState) => ({ items: [...prevState.items, todo.value] }))
     }
+
+    handleRemoveItem = (value) => {
+        this.setState((prevState) => ({
+            items: prevState.items.filter((item, index) => index !== value)
+        }))
+    }
+
+    handleReset = () => {
+        this.setState({
+            items: []
+        })
+    }
+
     render() {
         return (
             <div>
-                <form onSubmit={this.handleAddItem}>
-                    <ul>
-                        {this.state.items.map(item => <li>{item}</li>)}
-                    </ul>
-                    <input type="text" id="input"></input>
-                    <button type='submit' >Add item</button>
+                <form ref={this.formRef} onSubmit={this.handleAddItem}>
+                    {this.props.render(this.state.items, this.handleRemoveItem)}
+                    <input  type="text" name="todo" className='border border-blue-400'></input>
+                    <button type='submit' className='border border-blue-400'>Add item</button>
                 </form>
             </div>
         )
