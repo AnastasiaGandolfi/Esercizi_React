@@ -1,5 +1,6 @@
 import React from "react";
-import Login from "./Login";
+import Container from "./Container";
+import { Hello } from "./HelloWorld";
 
 
 export class App extends React.Component {
@@ -9,7 +10,9 @@ export class App extends React.Component {
     render() {
         return(
             <div>
-                <Login />
+                <Container>
+                    <Hello />
+                </Container>
             </div>
         )
     }
