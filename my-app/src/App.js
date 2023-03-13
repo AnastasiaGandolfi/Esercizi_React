@@ -10,7 +10,7 @@ export class App extends React.Component {
     render() {
         return(
             <div>
-                <Container>
+                <Container title={"This is the title"}>
                     <Hello />
                 </Container>
             </div>
