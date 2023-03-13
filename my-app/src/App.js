@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "./Container";
-import { Hello } from "./HelloWorld";
-import {Age} from "./Age";
+import TodoList from "./TodoList";
 
 
 export class App extends React.Component {
@@ -9,10 +8,23 @@ export class App extends React.Component {
         console.log(loginData);
     }
     render() {
-        return(
+        return (
             <div>
                 <Container title={"Hello"}>
-                    <Hello />
+                    <TodoList
+                        render={(items, handleRemoveItem) => {
+                            return (
+                                <ul>
+                                    {items.map((item, index) => (
+                                        <li key={item + index}>
+                                            {item}
+                                            <button className="ml-3 border border-blue-400" onClick={() => handleRemoveItem(index)}>Remove</button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            );
+                        }}
+                    />
                 </Container>
             </div>
         )
