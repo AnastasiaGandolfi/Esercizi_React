@@ -8,7 +8,6 @@ export class DisplayLanguage extends React.Component {
     render() {
         return (
             <div >
-                
             </div>
         )
     }
