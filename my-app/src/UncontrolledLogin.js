@@ -32,6 +32,10 @@ export default class UncontrolledLogin extends React.Component {
     }
   }
 
+  componentDidMount = () => {
+    this._formRef.current.elements.username.focus()
+  }
+
   render() {
     return (
       <div>
@@ -41,7 +45,6 @@ export default class UncontrolledLogin extends React.Component {
             name="username"
             type="text"
             onChange={this.isLoginValid}
-            autoFocus
           />
           <br />
           <br />
