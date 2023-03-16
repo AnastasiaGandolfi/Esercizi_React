@@ -1,29 +1,17 @@
-import React from "react";
+// Rewrite the ClickCounter component from Events 01 as a function component, and use the useState hook to track the state of the counter.
 
-export class ClickCounter extends React.Component {
-    state = {
-        count: this.props.initialValue,
+import React, { useState } from 'react'
+
+export default function ClickCounter({initialValue = 0, incrementBy = 1}) {
+    const [count, setCount] = useState(initialValue)
+
+    function handleCounterIncrement() {
+        setCount(count => count + incrementBy)
     }
-
-    handleCounterIncrement = () => {
-        this.setState(prevState => {
-            return {
-                count: prevState.count + this.props.incrementBy,
-            }
-        })
-    }
-
-    render() {
-        return (
-            <div>
-                <h3>Count: {this.state.count}</h3>
-                <button onClick={this.handleCounterIncrement}>Increment</button>
-            </div>
-        )
-    }
-}
-
-ClickCounter.defaultProps = {
-    initialValue: 0,
-    incrementBy: 1
+    return (
+        <div>
+            <h3>Count: {count}</h3>
+            <button onClick={handleCounterIncrement}>Increment</button>
+        </div>
+    )
 }
