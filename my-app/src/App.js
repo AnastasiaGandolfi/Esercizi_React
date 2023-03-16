@@ -1,12 +1,12 @@
 import React from "react";
-import Welcome from "./Welcome";
+import Sum from "./Sum";
 
 
 export class App extends React.Component {
     render() {
         return (
             <div>
-                <Welcome name='Anastasia' />
+                <Sum numbers = {[3, 5, 6, 7, 7, 2]} />
             </div >
         )
     }
