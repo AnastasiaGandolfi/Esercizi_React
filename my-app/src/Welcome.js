@@ -1,17 +1,11 @@
-import React from "react";
-import './index.css'
+/* Rewrite the Welcome component to be a function component. */
 
-/* Create an index.css file and import it within the index.js file. 
-Add a .welcome class to the Welcome component that changes its background color and adds a border. */
+import React from 'react'
 
-class Welcome extends React.Component {
-    render() {
-        return (
-            <div className="welcome">
-                <h1>Welcome, {this.props.name}!</h1>
-            </div>
-        )
-    }
+export default function Welcome({name= 'World'}) {
+  return (
+    <div>
+        <h1>Welcome, {name}!</h1>
+    </div>
+  )
 }
-
-export default Welcome
