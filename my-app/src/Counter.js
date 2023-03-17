@@ -1,25 +1,21 @@
-import React from "react";
-import CounterDisplay from "./CounterDisplay";
+// Rewrite the Counter component from State 1 as a function component and add a side effect that initializes the interval as soon as the component renders, and clears it when the component unmounts.
 
-export class Counter extends React.Component {
-    state = {
-        count: this.props.initialValue,
-    }
-    componentDidMount(){
+import { useEffect, useState } from "react"
 
-        this.interval = setInterval(() => {
-            this.setState((prevState) => {
-                return { count: prevState.count + this.props.incrementAmount }
-            })
-        }, this.props.timeout)
-    }
-    componentWillUnmount(){
-        clearInterval(this.interval)
-    }
+export function Counter() {
+    const [count, setCount] = useState(0)
 
-    render() {
-        return (
-            <CounterDisplay countState={this.state.count} />
-        )
-    }
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCount(count => count + 1)
+        }, 1000)
+
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
+
+    return (
+        <div> Counter: {count} </div>
+    )
 }
