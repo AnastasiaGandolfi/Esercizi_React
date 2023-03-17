@@ -1,75 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 
+// Rewrite the Login component from Forms 03 as a function component, and use the useState hook to track the state of the username, password and remember inputs. Tip: you can use useState more than once.
 
-export default class Login extends React.Component {
-    state = {
-        username: "",
-        password: "",
-        remember: false,
+export default function Login({ onLogin }) {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [remember, setRemember] = useState(false);
+
+    const handleLogin = () => {
+        onLogin({ username, password, remember })
     }
+    const isLoginValid = !username || !password;
 
-    handleInputChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        const checked = event.target.checked;
-        const type = event.target.type;
-        this.setState({
-            [name]: type === 'checkbox' ? checked : value
-        })
+    function handleReset() {
+        setUsername('')
+        setPassword('')
+        setRemember(false)
     }
-
-    isLoginValid = () => {
-        return this.state.username !== '' && this.state.password !== '';
-    }
-
-    handleReset = () => {
-        this.setState({
-            username: "",
-            password: "",
-            remember: false,
-        })
-    }
-
-    render() {
-        return (
-            <div>
-                <label>Name: </label>
-                <input
-                    name="username"
-                    type="text"
-                    value={this.state.username}
-                    onChange={this.handleInputChange} />
-                <br />
-                <br />
-                <label>Password: </label>
-                <input
-                    name="password"
-                    type="password"
-                    value={this.state.password}
-                    onChange={this.handleInputChange} />
-                <br />
-                <br />
-                <label>Remember me: </label>
-                <input
-                    name="remember"
-                    type="checkbox"
-                    value="remember"
-                    checked={this.state.remember}
-                    onChange={this.handleInputChange} />
-                <br />
-                <button
-                    type="submit"
-                    disabled={!this.isLoginValid()}
-                    onClick={this.props.onLogin}
-                    style={{
-                        backgroundColor: this.state.password.length < 8 ? "red" : "green"
-                    }}>
-                        Login
-                </button>
-                <button type="submit" onClick={this.handleReset}>Reset</button>
-            </div>
-        )
-    }
+    return (
+        <div>
+            <label>Name: </label>
+            <input
+                name="username"
+                type="text"
+                value={username}
+                onChange={e => setUsername(e.target.value)} />
+            <br />
+            <br />
+            <label>Password: </label>
+            <input
+                name="password"
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)} />
+            <br />
+            <br />
+            <label>Remember me: </label>
+            <input
+                name="remember"
+                type="checkbox"
+                value="remember"
+                checked={remember}
+                onChange={e => setRemember(e.target.checked)} />
+            <br />
+            <button
+                type="submit"
+                disabled={isLoginValid}
+                onClick={handleLogin}
+                style={{
+                    backgroundColor: isLoginValid ? "purple" : "green"
+                }}>
+                Login
+            </button>
+            <button type="submit" onClick={handleReset}>Reset</button>
+        </div>
+    )
 }
-
-// Modify the Login component from Forms 03 so that the "login" button background color is "red" when the inputted password's length is shorter than 8 characters, green otherwise.

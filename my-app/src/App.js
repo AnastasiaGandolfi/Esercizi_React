@@ -1,13 +1,18 @@
 import React from "react";
-import ClickCounter from "./ClickCounter";
+import Login from "./Login";
 
 
 
 export class App extends React.Component {
+
+    onLogin = (data) => {
+        console.log(data);
+    }
+
     render() {
         return (
             <div>
-                <ClickCounter />
+                <Login onLogin={this.onLogin} />
             </div >
         )
     }

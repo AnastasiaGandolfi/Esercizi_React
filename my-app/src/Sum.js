@@ -1,5 +1,3 @@
-// What happens if the numbers prop of the Sum component is not set? How can you set a default value for this prop?
-
 import React from 'react'
 
 export default function Sum({numbers = [3, 5, 6, 9, 7, 2]}) {
