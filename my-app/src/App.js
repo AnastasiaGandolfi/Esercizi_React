@@ -1,18 +1,19 @@
 import React from "react";
+import ClickCounter from "./ClickCounter";
 import Login from "./Login";
 
 
 
 export class App extends React.Component {
 
-    onLogin = (data) => {
-        console.log(data);
+    handleCounterChange = (count) => {
+        console.log(`The counter is ${count}`);
     }
 
     render() {
         return (
             <div>
-                <Login onLogin={this.onLogin} />
+                <ClickCounter onCounterChange={this.handleCounterChange} />
             </div >
         )
     }
