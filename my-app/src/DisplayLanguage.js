@@ -1,6 +1,3 @@
-// Rewrite the DisplayLanguage component from Context 02 to be a function component, and access the LanguageContext through the useContext hook.
-
-
 import React, { useContext } from "react"
 import { LanguageContext } from "./LanguageContext"
 
