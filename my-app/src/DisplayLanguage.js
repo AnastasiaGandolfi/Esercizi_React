@@ -1,19 +1,24 @@
-// Create a LanguageContext and wrap a DisplayLanguage component within its provider. Add a select tag to the component containing the DisplayLanguage component that allows the user to select the language, and pass it as a value to the Provider.
+// Rewrite the DisplayLanguage component from Context 02 to be a function component, and access the LanguageContext through the useContext hook.
 
-import React from "react"
+
+import React, { useContext } from "react"
 import { LanguageContext } from "./LanguageContext"
 
-
-export class DisplayLanguage extends React.Component {
-    render() {
-        return (
-            <div >
-                <LanguageContext.Consumer>
-                    {(language) => {
-                        return <h1>La lingua selezionata è: {language}</h1>
-                    }}
-                </LanguageContext.Consumer>
-            </div>
-        )
+const translation = {
+    en: {
+        'lang': 'The language selected is: '
+    },
+    it: {
+        'lang': 'La lingua selezionata è: '
     }
+}
+
+export default function DisplayLanguage() {
+    const language = useContext(LanguageContext)
+
+    return (
+        <div >
+            <h1>{translation[language]['lang']}{language}</h1>
+        </div>
+    )
 }
