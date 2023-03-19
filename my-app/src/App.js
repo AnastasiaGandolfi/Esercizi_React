@@ -1,6 +1,24 @@
 import React, { useState } from "react";
-import DisplayLanguage from "./DisplayLanguage";
-import { LanguageContext } from "./LanguageContext";
+import FilteredList from "./FilteredList";
+
+
+const list = [
+    {
+        name: 'Anastasia Gandolfi',
+        id: '1',
+        age: 27,
+    },
+    {
+        name: 'Marco Rossi',
+        id: '2',
+        age: 17,
+    },
+    {
+        name: 'Giulia Bianchi',
+        id: '3',
+        age: 33,
+    },
+]
 
 export function App() {
     const [language, setLanguage] = useState('en')
@@ -9,13 +27,7 @@ export function App() {
     }
     return (
         <div>
-            <select value={language} onChange={handleChangeLanguage}>
-                <option value='en'>English</option>
-                <option value='it'>Italiano</option>
-            </select>
-            <LanguageContext.Provider value={language}>
-                <DisplayLanguage />
-            </LanguageContext.Provider>
+            <FilteredList list={list}/>
         </div >
     )
 }
