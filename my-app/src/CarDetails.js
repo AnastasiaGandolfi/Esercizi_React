@@ -1,34 +1,23 @@
-import React, { useEffect, useRef } from 'react'
-
 // Create a CarDetails uncontrolled form that uses the HTML Form API to allow the user to insert details about a car, such as the model, the year and the color. Allow the form to receive a initialData prop that contains the default values of each input, and reset the form every time the initialData value changes.
 
+import React, { useEffect, useRef } from 'react'
+
 export default function CarDetails({ initialData }) {
-    const formRef = useRef(null)
+    const formRef = useRef()
 
     useEffect(() => {
-        formRef.current.reset()
+        formRef.current.elements.model.value = initialData.model
+        formRef.current.elements.year.value = initialData.year
+        formRef.current.elements.color.value = initialData.color
     }, [initialData])
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        const formData = new FormData(event.target);
-        const model = formData.get('model')
-        const year = formData.get('year')
-        const color = formData.get('color')
-        console.log(`Model: ${model}, Year: ${year} Color: ${color}`);
-    }
-
 
     return (
         <div>
-            <form ref={formRef} onSubmit={handleSubmit} className='flex flex-col w-2/4'>
-                <label htmlFor="model">Model:</label>
-                <input type='text' name='model' defaultValue={initialData.model}className='border-4 border-red-500' />
-                <label htmlFor="year">Year:</label>
-                <input type='text' name='year' defaultValue={initialData.year}className='border-4 border-red-500' />
-                <label htmlFor="color">Color:</label>
-                <input type='text' name='color' defaultValue={initialData.color}className='border-4 border-red-500' />
-                <button type='submit'>Submit</button>
+            <h1>Car:</h1>
+            <form ref={formRef} >
+                <input name='model' />
+                <input name='year' />
+                <input name='color' />
             </form>
         </div>
     )
