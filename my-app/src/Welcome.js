@@ -1,5 +1,3 @@
-/* Rewrite the Welcome component to be a function component. */
-
 import React from 'react'
 
 export default function Welcome({name= 'World'}) {
