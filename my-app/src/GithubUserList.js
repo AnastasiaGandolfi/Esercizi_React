@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { Link, Outlet } from 'react-router-dom';
 import GithubUser from './GithubUser'
-
-// Create a GithubUserList component that maintains an array of usernames, showing a GithubUser component for each username entered. The usernames should be added to the array using an input field and a button.
+import ShowGithubUser from './ShowGithubUser';
 
 export default function GithubUserList() {
     const [users, setUsers] = useState([]);
@@ -24,11 +24,13 @@ export default function GithubUserList() {
             <ul>
                 {users.map((user, index) => (
                     <li key={index}>
-                        <GithubUser username={user} />
+                        <Link to={`/users/${user}`}>
+                            {user}
+                        </Link>
                     </li>
                 ))}
             </ul>
+            <Outlet />
         </div>
     );
 }
-
