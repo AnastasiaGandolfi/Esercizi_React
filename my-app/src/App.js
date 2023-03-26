@@ -4,7 +4,7 @@ import { Counter } from "./Counter";
 import ShowGithubUser from "./ShowGithubUser";
 import Welcome from "./Welcome";
 
-// Add three Links within the main App component and use them to navigate to all three routes.
+// Add a Not Found route that renders when a user navigates to a path that does not exist.
 
 export class App extends React.Component {
     render() {
@@ -38,6 +38,14 @@ export class App extends React.Component {
                             </Link>
                         </div>
                     } />
+                    <Route path='*' element={
+                        <div>
+                            <p>Not found</p>
+                            <Link to='/'>
+                                Go home
+                            </Link>
+                        </div>}>
+                    </Route>
                 </Routes>
             </div >
         )
