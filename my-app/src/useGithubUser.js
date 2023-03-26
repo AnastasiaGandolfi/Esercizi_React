@@ -1,35 +1,16 @@
-// Modify the useGithubUser hook to return the function to fetch the data of a Github user, along with the data of the user and the error and loading states.
+// Modify the useGithubUser custom hook from Custom Hooks 03 to use the useSWR hook to fetch the data of a Github user.
 
-import { useState } from 'react'
+import useSWR from 'swr'
 
-export default function useGithubUser() {
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+const fetcher = (url) => fetch(url).then((res)=>res.json())
 
-  async function getUser(username) {
-    setLoading(true)
-    setError(null)
-    try {
-      let res = await fetch(`https://api.github.com/users/${username}`)
-      if (res.status === 200) {
-        let json = await res.json()
-        setData(json)
-        console.log(json);
-      }
-    } catch (error) {
-      setError(error)
-      setData(null)
-    } finally {
-      setLoading(false)
-    }
-
-  }
-
+export default function useGithubUser(username) {
+  
+  const {data, error} = useSWR(`https://api.github.com/users/${username}`, fetcher)
+  
   return {
     data,
-    loading,
+    loading: !data && !error,
     error,
-    getUser,
   }
 }
